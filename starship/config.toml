@@ -1,0 +1,24 @@
+# プロンプトの全体の並び順（左側）
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$line_break\
+$character"""
+
+# ディレクトリ表示の設定
+[directory]
+truncation_length = 3
+fish_style_pwd_dir_length = 1
+
+# Gitのブランチ設定
+[git_branch]
+symbol = "🌳 "
+# %r でリポジトリのルート（親リポジトリ名）を表示できます
+format = "on [$symbol$repo_name:$branch]($style) "
+style = "cyan bold"
+
+# Gitのステータス表示（不要なら無効化も可能）
+[git_status]
+disabled = false

@@ -1,0 +1,60 @@
+[bootstrap.packages]
+"brew-cask:slack" = "latest"
+"brew-cask:claude" = "latest"
+"brew-cask:logi-options+" = "latest"
+"brew-cask:zed" = "latest"
+"brew-cask:ghostty" = "latest"
+"brew-cask:docker-desktop" = "latest"
+"brew-cask:obsidian" = "latest"
+"brew:zsh-autosuggestions" = "latest"
+"brew-cask:google-chrome" = "latest"
+
+[env]
+CLOUDSDK_PYTHON = "~/.local/share/mise/installs/python/3.14/bin/python3"
+
+[tools]
+"python" = "3.14"
+"ghq" = "latest"
+"peco" = "latest"
+"gh" = "latest"
+"codegraph" = "latest"
+"herdr" = "latest"
+"awscli" = "latest"
+"gcloud" = { version = "latest", depends = ["python"] }
+"starship" = "latest"
+"lazygit" = "latest"
+"entire" = "latest"
+
+[bootstrap.macos.dock]
+autohide = false
+orientation = "left"
+tilesize = 96
+show_recents = false
+
+[bootstrap.macos.finder]
+show_all_files = true
+show_pathbar = true
+preferred_view_style = "list"
+
+[bootstrap.macos.defaults]
+"com.apple.finder" = { AppleShowAllFiles = true }
+"com.apple.WindowManager" = { StandardHideWidgets = true, StageManagerHideWidgets = true }
+"com.apple.screencapture" = { location = "/Users/y.iwamoto/Pictures/Screenshots" }
+
+[tasks."setup:macos-keys"]
+description = "Option+Tabで同一アプリのウィンドウ切替"
+run = [
+  "defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 27 '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>65535</integer><integer>48</integer><integer>524288</integer></array></dict></dict>'",
+  "/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u",
+]
+
+[tasks.bootstrap]
+description = "clean docks"
+run = "mkdir -p ~/Pictures/Screenshots && killall Dock && killall Finder && (killall screencaptureui || true)"
+depends = ["setup:macos-keys"]
+
+[dotfiles]
+"~/.config/mise" = "~/dotfiles/mise"
+"~/.zshrc" = "~/dotfiles/.zshrc"
+"~/.aws/config" = "~/dotfiles/.aws/config"
+"~/.config/starship.toml" = "~/dotfiles/starship/config.toml"
