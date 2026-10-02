@@ -8,6 +8,7 @@
 "brew-cask:obsidian" = "latest"
 "brew:zsh-autosuggestions" = "latest"
 "brew-cask:google-chrome" = "latest"
+"brew-cask:session-manager-plugin" = "latest"
 
 [env]
 CLOUDSDK_PYTHON = "~/.local/share/mise/installs/python/3.14/bin/python3"
