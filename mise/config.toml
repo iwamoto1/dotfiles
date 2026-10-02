@@ -59,3 +59,4 @@ depends = ["setup:macos-keys"]
 "~/.zshrc" = "~/dotfiles/.zshrc"
 "~/.aws/config" = "~/dotfiles/.aws/config"
 "~/.config/starship.toml" = "~/dotfiles/starship/config.toml"
+"~/.config/git/config" = "~/dotfiles/git/config"
